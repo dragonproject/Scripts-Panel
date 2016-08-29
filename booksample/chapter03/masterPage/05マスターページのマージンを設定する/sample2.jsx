@@ -1,0 +1,1 @@
+(function sample0001(){	var docObj = app.activeDocument;	var marginPre = docObj.masterSpreads[0].pages[0].marginPreferences;	//マスターページのマージン設定	marginPre.top = "20mm";	//マージン（天）	marginPre.bottom = "15mm";	//マージン（地）	marginPre.left = "10mm";	//マージン（左・ノド）	marginPre.right = "10mm";	//マージン（右・小口）})();

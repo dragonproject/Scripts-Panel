@@ -1,0 +1,1 @@
+(function sample0001(){	colorObj = app.activeDocument.colors.item("C=100 M=0 Y=0 K=0");	if (colorObj != null)	{		var tfObj = app.activeDocument.pages[0].textFrames.add();	// 1ページ目に新規作成		tfObj.visibleBounds = ["10mm","20mm","50mm","100mm"];		tfObj.contents = "InDesign自動レイアウト処理";		tfObj.fillColor = app.activeDocument.swatches.item("C=100 M=0 Y=0 K=0");	}})();

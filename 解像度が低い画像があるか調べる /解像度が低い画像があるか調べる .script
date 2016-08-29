@@ -1,0 +1,95 @@
+-- 最低解像度を取得（ダイアログ表示）
+on setPPIMin()
+    display dialog "最低解像度を入れてください" default answer 300
+    text returned of result
+end setPPIMin
+
+-- 指定されたページの全画像を返す
+on allGraphics(myPage)
+    tell document 1 of application "Adobe InDesign CS6"
+        all graphics of page myPage
+    end tell
+end allGraphics
+
+-- 画像解像度を返す
+on getPpi(myImage)
+    tell application "Adobe InDesign CS6"
+        set {eX, eY} to effective ppi of myImage -- 画像の{横,縦}の解像度
+        set {aX, aY} to actual ppi of myImage -- 元の{横,縦}の解像度
+        return {{eX, eY}, {aX, aY}}
+    end tell
+end getPpi
+
+-- オブジェクトを選択状態にする
+on selectPageItems(myList)
+    tell application "Adobe InDesign CS6"
+        select myList
+    end tell
+end selectPageItems
+
+-- 選択状態を空にする
+on clearSelection()
+    tell application "Adobe InDesign CS6"
+        set selection of document 1 to {}
+    end tell
+end clearSelection
+
+-- メッセージを表示
+on showMsg(myPpi, itemCount)
+    if itemCount > 1 then
+        set myMsg to "解像度 " & myPpi & "以下の画像は、" & itemCount & "個ありました。"
+    else
+        set myMsg to "解像度 " & myPpi & " 以下の画像は、ありませんでした。"
+    end if
+
+    tell application "Adobe InDesign CS6"
+        activate
+        display dialog myMsg giving up after 3
+    end tell
+end showMsg
+
+on tmp()
+end tmp
+``````
+
+## 部品が揃ったので、実行
+
+on run {}
+    --my setUp()
+    my main()
+    my tearDown()
+end run
+
+on setUp()
+end setUp
+
+on main()
+    set ppiMin to setPPIMin()
+    set myList to allGraphics(1)
+    set myItems to {} -- 選択対象アイテム
+
+    set loop to number of myList
+
+    repeat with i from 1 to loop
+        set myImage to item i of myList
+        set {myPpi, orgPpi} to getPpi(myImage)
+        set {pX, pY} to myPpi
+        log "PX: " & pX & "PY: " & pY
+        if (pX < ppiMin) or (pY < ppiMin) then
+            set end of myItems to myImage
+        end if
+    end repeat
+
+    if myItems is not {} then
+        selectPageItems(myItems)
+    else
+        clearSelection()
+    end if
+
+    showMsg(ppiMin, number of myItems)
+end main
+
+on tearDown()
+    activate
+    display dialog "Script 終了" giving up after 3
+end tearDown

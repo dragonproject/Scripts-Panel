@@ -1,0 +1,1 @@
+(function sample0001(){	var filename = File.openDialog("削除するファイルを指定してください");	if (filename)	{		var flag = (new File(filename)).remove();		if (flag == false)		{			alert("ファイルが削除できませんでした");		}	}})();

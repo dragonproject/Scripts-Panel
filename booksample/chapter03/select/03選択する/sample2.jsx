@@ -1,0 +1,1 @@
+(function sample0001(){	var pageObj = app.activeDocument.pages[0];	// 1ページ目を処理の対象にする	for (var i=0; i<pageObj.allPageItems.length; i++)	{		pageObj.allPageItems[i].select(SelectionOptions.addTo);	}})();

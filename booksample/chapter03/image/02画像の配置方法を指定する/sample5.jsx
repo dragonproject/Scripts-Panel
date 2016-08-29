@@ -1,0 +1,1 @@
+(function sample0001(){	var imgObj = app.activeDocument.rectangles.add();	imgObj.visibleBounds = ["40mm", "40mm", "80mm", "120mm"];	var filename = File.openDialog("画像ファイルを指定してください");	if (filename) {		imgObj.place(filename);		imgObj.fit(FitOptions.fillProportionally);	}})();

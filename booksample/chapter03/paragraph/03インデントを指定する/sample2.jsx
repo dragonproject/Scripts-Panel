@@ -1,0 +1,1 @@
+(function sample0001(){	var pageNo = 0;	// 1ページ目	var textframeNo = 0;	// 最前面のテキストフレーム	var tfObj = app.activeDocument.pages[pageNo].textFrames[textframeNo];	// 処理対象のテキストフレーム	for(var i=0; i<tfObj.paragraphs.length; i++)	// 全ての段落を処理する	{		if (tfObj.paragraphs[i].characters[0].contents == "■")		{			tfObj.paragraphs[i].firstLineIndent = "10mm";		}	}})();

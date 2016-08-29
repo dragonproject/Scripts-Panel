@@ -1,0 +1,1 @@
+(function sample0001(){	var layName = "レイヤー 4";	for (var i=0; i<app.activeDocument.layers.length; i++)	{		if (app.activeDocument.layers[i].name == layName)		{			var actLayer = app.activeDocument.layers.item(layName);			app.layoutWindows[0].activeLayer = actLayer;			return;		}	}})();

@@ -1,0 +1,1 @@
+(function(){	var tableObj = app.activeDocument.selection;	for (i=0; i<tableObj[0].rows.length; i++)	{		for(k=0; k<tableObj[0].rows[i].columns.length; k++)		{			var cell = tableObj[0].rows[i].cells[k];			if (cell.characters[0].contents == "-")			{				cell.characters[0].contents = "▲";			}		}	}})();

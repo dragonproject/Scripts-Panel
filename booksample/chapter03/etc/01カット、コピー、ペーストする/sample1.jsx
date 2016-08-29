@@ -1,0 +1,1 @@
+app.copy();app.paste();

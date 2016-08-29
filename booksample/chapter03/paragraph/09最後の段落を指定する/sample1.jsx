@@ -1,0 +1,1 @@
+(function sample0001(){	var pageNo = 0;	// 1ページ目	var textframeNo = 0;	// 最前面のテキストフレーム	var tfObj = app.activeDocument.pages[pageNo].textFrames[textframeNo]; // 処理対象のテキストフレーム	tfObj.paragraphs[-1].remove();})();

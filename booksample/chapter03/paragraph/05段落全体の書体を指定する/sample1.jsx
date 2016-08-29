@@ -1,0 +1,1 @@
+(function sample0001(){	var pageNo = 0;	// 1ページ目	var textframeNo = 0;	// 最前面のテキストフレーム	var paraNo = 0;	// 最初の段落	var tfObj = app.activeDocument.pages[pageNo].textFrames[textframeNo];	// 処理対象のテキストフレームを指定	tfObj.paragraphs[paraNo].appliedFont = app.fonts.item("小塚ゴシック Pro	B");	// 小塚ゴシック Pro Bにする })();

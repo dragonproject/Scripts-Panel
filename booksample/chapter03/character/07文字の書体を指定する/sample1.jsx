@@ -1,0 +1,1 @@
+(function sample0001(){	var fontObj = app.fonts.item("小塚ゴシック Pro");	var tfObj = app.activeDocument.pages[0].textFrames[0];	tfObj.paragraphs[0].characters[0].appliedFont = fontObj;	tfObj.paragraphs[0].characters[0].fontStyle = "H";})();

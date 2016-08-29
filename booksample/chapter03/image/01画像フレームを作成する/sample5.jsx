@@ -1,0 +1,1 @@
+(function sample0001(){	var imgObj = app.activeDocument.ovals.add();	imgObj.visibleBounds = ["20mm", "30mm", "70mm", "80mm"];	imgObj.place(new File("~/images/sample.jpg"));	imgObj.fit(FitOptions.fillProportionally);})();

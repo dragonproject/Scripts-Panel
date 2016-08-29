@@ -1,0 +1,1 @@
+(function sample0001(){	var tfObj = app.activeDocument.pages[0].textFrames.add();	// 1ページ目に新規作成	tfObj.visibleBounds = ["10mm","20mm","60mm","40mm"];	tfObj.contents = "InDesign自動レイアウト処理";	tfObj.horizontalScale = 200;	tfObj.verticalScale = 50;})();

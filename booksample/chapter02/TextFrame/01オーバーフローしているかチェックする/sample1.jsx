@@ -1,0 +1,1 @@
+(function(){	var docObj = app.activeDocument;	for (var i=0; i<docObj.pages.length; i++)	{		var tfObj = docObj.pages[i].textFrames;		for (var j=0; j<tfObj.length; j++)		{			if (tfObj[j].overflows == true)			{				alert((i+1)+"ページ目にオーバーフローしたテキストフレームがあります");				return;			}		}	}})();

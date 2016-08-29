@@ -1,0 +1,1 @@
+(function sample0001(){	var fileObj = new File("~/IDSample/sample.indd");	var cDate = fileObj.created;	// 作成日を取得	var mDate = fileObj.modified;	// 修正日を取得	alert("作成日："+cDate);	alert("修正日："+mDate);})();

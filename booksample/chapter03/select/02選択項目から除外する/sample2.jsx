@@ -1,0 +1,1 @@
+(function sample0001(){	var selObj = app.activeDocument.selection;	var count = selObj.length;	for (var i=0; i<count; i++)	{		if (selObj[i].contentType == ContentType.textType)		{			selObj[i].select(SelectionOptions.removeFrom);		}	}})();

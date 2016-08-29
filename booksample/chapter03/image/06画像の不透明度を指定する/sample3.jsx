@@ -1,0 +1,1 @@
+(function sample0001(){	var pageObj = app.activeDocument.pages[0];	// 1ページ目	for (var i=0; i<pageObj.allGraphics.length; i++)	{		var imgObj = pageObj.allGraphics[i];		imgObj.transparencySettings.blendingSettings.opacity = 40;	}})();

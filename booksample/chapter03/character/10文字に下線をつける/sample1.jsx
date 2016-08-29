@@ -1,0 +1,1 @@
+(function sample0001(){	var tfObj = app.activeDocument.pages[0].textFrames[0];	tfObj.paragraphs[0].characters[0].underline = true;	tfObj.paragraphs[0].characters[0].underlineWeight = "5pt";	tfObj.paragraphs[0].characters[0].underlineColor = app.activeDocument.swatches.item("C=0 M=100 Y=0 K=0");})();

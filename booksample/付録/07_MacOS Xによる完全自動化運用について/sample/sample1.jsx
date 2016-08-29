@@ -1,0 +1,1 @@
+﻿(function(){	var docObj = app.documents.add();	docObj.documentPreferences.pageWidth = "140mm";	// 横幅は14cm	docObj.documentPreferences.pageHeight = "100mm";	// 縦幅は10cm	docObj.documentPreferences.pagesPerDocument = 1;	// 1ページ作成	docObj.documentPreferences.pageOrientation = PageOrientation.portrait;	docObj.cjkGridPreferences.showAllLayoutGrids = false; // レイアウトグリッドはオフ})();

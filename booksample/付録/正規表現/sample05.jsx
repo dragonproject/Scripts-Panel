@@ -1,0 +1,1 @@
+var text = app.activeDocument.textFrames[0].parentStory.contents;var result = text.replace(/^　+/gm, "");app.activeDocument.textFrames[0].parentStory.contents = result;function check(str,ptr,src){	alert(str);}

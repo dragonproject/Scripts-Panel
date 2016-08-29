@@ -1,0 +1,1 @@
+(function sample0001(){	var tfObj = app.activeDocument.pages[0].textFrames[0];	for (var i=0; i<tfObj.paragraphs.length; i++)	{		for (var j=0; j<tfObj.paragraphs[i].characters.length; j++)		{			if (tfObj.paragraphs[i].characters[j].contents == "桜")			{				tfObj.paragraphs[i].characters[j].baselineShift = "5pt";			}		}	}})();

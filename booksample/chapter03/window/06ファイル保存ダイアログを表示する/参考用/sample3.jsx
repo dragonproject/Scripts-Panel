@@ -1,0 +1,1 @@
+(function sample0001(){	var fileObj = File.saveDialog("保存先を指定してください",checkFileType);	alert(fileObj.fsName);	function checkFileType(fileObj){	alert(fileObj);		if (fileObj.name.indexOf("indd") > -1) return true;		return false;	}})();

@@ -1,0 +1,1 @@
+(function sample0001(){	var pageNo = 1;	// 2ページ目	var textframeNo = 0;	// 最初3のテキストフレーム	var paraNo = 2;	// 3番目の段落	var count = app.activeDocument.pages[pageNo].textFrames[textframeNo].paragraphs[paraNo].remove();})();

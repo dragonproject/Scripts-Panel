@@ -1,0 +1,1 @@
+(function sample0001(){	var tableObj = app.activeDocument.selection;	var cell1 = tableObj[0].rows[0].cells[0];	var sType = app.activeDocument.strokeStyles.item("二重線");	cell1.bottomEdgeStrokeType = sType;	cell1.bottomEdgeStrokeWeight = "4pt";})();

@@ -1,0 +1,1 @@
+(function sample0001(){	var tfObj = app.activeDocument.textFrames.add();	tfObj.visibleBounds = ["25mm","30mm","80mm","125mm"];	var tableObj = tfObj.tables.add();	tableObj.bodyRowCount = 4;	tableObj.columnCount = 3;	tableObj.columns[0].contents = ["1","2","3"];	tableObj.columns[1].contents = "■";	tableObj.columns[2].contents = "●";})();

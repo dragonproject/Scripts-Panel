@@ -1,0 +1,1 @@
+(function sample0001(){	var tableObj = app.activeDocument.selection;	for(var i=0; i<tableObj[0].rows.length; i++)	{		for (var j=0; j<tableObj[0].rows[i].cells.length; j++)		{			tableObj[0].rows[i].cells[j].contents = "("+i+","+j+")";		}	}})();

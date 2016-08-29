@@ -1,0 +1,1 @@
+function layoutTextFile(){	var docObj = app.activeDocument;	var tfObj = docObj.pages[0].textFrames.add();	// テキストフレームを追加	tfObj.visibleBounds = ["0mm","0mm","297mm","210mm"];	// A4サイズのテキストフレームを作成	var fileObj = new File("~/IDSampleFolder/sample.txt");	// 読み込むファイルのパスを指定	fileObj.open("r");	tfObj.contents = fileObj.read();	fileObj.close();}// 実際に関数を呼び出すlayoutTextFile();

@@ -1,0 +1,1 @@
+(function sample0001(){	var pageNo = 0;	// 1ページ目	var textframeNo = 0;	// 最前面のテキストフレーム	var pageDoc = app.activeDocument.pages[pageNo];	var targetFrame = pageDoc.textFrames[textframeNo];	var lastParaNo = targetFrame.paragraphs.length - 1;	// 最後の段落	var count = targetFrame.paragraphs[lastParaNo].remove();})();

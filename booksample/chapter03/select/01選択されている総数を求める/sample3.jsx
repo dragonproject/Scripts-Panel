@@ -1,0 +1,1 @@
+(function sample0001(){	var selObj = app.activeDocument.selection;	var count = selObj.length;	for (var i=0; i<count; i++)	{		alert("選択された文字数："+selObj[i].length);		alert("選択された内容："+selObj[i].contents);	}})();

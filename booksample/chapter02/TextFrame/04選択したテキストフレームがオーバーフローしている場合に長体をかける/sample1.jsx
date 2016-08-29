@@ -1,0 +1,1 @@
+(function(){	var limitPer = 65;	// 65%未満にはしない	var selObj = app.activeDocument.selection;	for (var i=0; i<selObj.length; i++){		while (selObj[i].overflows == true) {			selObj[i].texts[0].horizontalScale--;			if (selObj[i].texts[0].horizontalScale <= limitPer) {				break;			}		}	}})();

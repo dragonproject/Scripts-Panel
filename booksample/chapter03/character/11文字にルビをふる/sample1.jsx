@@ -1,0 +1,1 @@
+(function sample0001(){	var tfObj = app.activeDocument.pages[0].textFrames[0];	tfObj.paragraphs[0].characters[0].rubyFlag = true;	tfObj.paragraphs[0].characters[0].rubyString = "さくら";	tfObj.paragraphs[0].characters[0].rubyFontSize = 8;})();

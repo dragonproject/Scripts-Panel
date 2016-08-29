@@ -1,0 +1,1 @@
+(function sample0001(){	var imgObj = app.activeDocument.textFrames.add();	imgObj.visibleBounds = ["20mm", "30mm", "70mm", "80mm"];	imgObj.contentType = ContentType.graphicType;	// 画像タイプに設定	var filename = File.openDialog("画像ファイルを指定してください");	// ファイル選択ダイアログを表示	if (filename) {		imgObj.place(filename, true);		imgObj.fit(FitOptions.fillProportionally);	}})();

@@ -1,0 +1,1 @@
+(function sample0001(){	var imgObj = app.activeDocument.pages[0].rectangles[0];	imgObj.transparencySettings.featherSettings.mode = FeatherMode.standard;	imgObj.transparencySettings.featherSettings.cornerType = FeatherCornerType.sharp;	imgObj.transparencySettings.featherSettings.width = "5mm";})();

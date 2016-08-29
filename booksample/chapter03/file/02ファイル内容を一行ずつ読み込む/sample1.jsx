@@ -1,0 +1,1 @@
+(function sample0001(){	var fileObj = new File("~/IDSample/sample.txt");	var flag = fileObj.open("r");	if (flag == true)	{		var text = fileObj.readln();	// ファイル内容を一行読み込む		alert(text);	// 読み込んだファイル内容を表示	}})();

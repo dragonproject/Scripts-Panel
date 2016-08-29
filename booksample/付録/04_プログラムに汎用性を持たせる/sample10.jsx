@@ -1,0 +1,1 @@
+// ライブラリを読み込む#include "~/Library/Preferences/Adobe InDesign/Version 11.0-J/ja_JP/Scripts/Scripts Panel/booksample/付録/04_プログラムに汎用性を持たせる/layout.jsxinc"// 実際に関数を呼び出すflag = Gihyo.layoutTextFile();if (flag == false){	alert("ファイルを読み込めませんでした");}

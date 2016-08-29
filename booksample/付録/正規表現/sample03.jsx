@@ -1,0 +1,1 @@
+var text = app.activeDocument.textFrames[0].parentStory.contents;var result = text.replace(/\d\d:\d\d:\d\d/g, check);app.activeDocument.textFrames[0].parentStory.contents = result;function check(str,ptr,src){	return str.split(":")[0]+"時"+str.split(":")[1]+"分"+str.split(":")[2]+"秒";}

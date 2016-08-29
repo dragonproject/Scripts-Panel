@@ -1,0 +1,1 @@
+(function(){	var docObj = app.activeDocument;	for (var i=0; i<docObj.pages.length; i++)	{		var tfObj = docObj.pages[i].textFrames;		for (var j=0; j<tfObj.length; j++)		{			if (tfObj[j].contents == "")			{				alert((i+1)+"ページに空のテキストフレームがあります");				tfObj[j].select();				return;			}		}	}})();

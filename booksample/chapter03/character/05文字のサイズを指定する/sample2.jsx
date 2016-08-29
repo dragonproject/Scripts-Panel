@@ -1,0 +1,1 @@
+(function sample0001(){	var tfObj = app.activeDocument.pages[0].textFrames[0];	for (var i=0; i<tfObj.paragraphs.length; i++)	{		if (tfObj.paragraphs[i].characters[0].contents == "■")		{			tfObj.paragraphs[i].characters[0].pointSize = "24Q";		}	}})();

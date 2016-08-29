@@ -1,0 +1,1 @@
+(function sample0001(){	var fileObj = File.openDialog("開くファイルを指定してください");	if (fileObj)	{		alert(fileObj.fsName);	// ファイルのパスを表示		alert(fileObj.name);	// ファイル名を表示(エンコード)		alert(File.decode(fileObj.name));	// ファイル名を表示(デコード)	}})();

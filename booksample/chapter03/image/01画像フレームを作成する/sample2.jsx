@@ -1,0 +1,1 @@
+(function sample0001(){	var imgObj = app.activeDocument.textFrames.add();	imgObj.visibleBounds = ["20mm", "30mm", "70mm", "80mm"];	imgObj.contentType = ContentType.graphicType;	// 画像タイプに設定	imgObj.place(new File("~/images/sample.jpg"), true);	// 読み込みオプションを表示	imgObj.fit(FitOptions.fillProportionally);})();

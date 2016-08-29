@@ -1,0 +1,1 @@
+(function sample0001(){	app.select(NothingEnum.nothing);	// すべての選択を解除する	var pageObj = app.activeDocument.pages[0];	// 1ページ目を処理の対象にする	for (var i=0; i<pageObj.graphicLines.length; i++)	{		pageObj.graphicLines[i].select(SelectionOptions.addTo);	}})();

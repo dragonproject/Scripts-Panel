@@ -1,0 +1,1 @@
+alert("InDesignのバージョンは"+app.version);

@@ -1,0 +1,4 @@
+tell application "Adobe InDesign CS3"
+	activate
+	do script file "Macintosh HD:sample1.jsx" language javascript
+end tell
