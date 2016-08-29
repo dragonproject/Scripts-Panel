@@ -2,7 +2,7 @@
 	var extType = "*.jpg";	// JPEGファイルだけを対象にする
 	var imgsStartX = zeroX = 10; // ページの貼り込み位置
 	var imgsStartY = zeroY = 20; // ページの貼り込み位置
-	var maxImgWidth = parseFloat(prompt("横幅をmm単位で指定してください", 40));  // perseFloat
+	var maxImgWidth = parseFloat(prompt("横幅をmm単位で指定してください", 40));  // perseFloat文字列を数値に変換
 	var maxImgHeight = parseFloat(prompt("縦幅をmm単位で指定してください", 30));
 	var diff = parseFloat(prompt("画像との間隔をmm単位で指定してください",5));
 	var pageWidth = 180;	// 180mm
@@ -41,7 +41,7 @@
 		var tfsLeft = (imgsStartX+tfOffsetWidth)+unit;	// テキストフレームの左端の位置
 		var tfsBaseTop = imgsStartY+imgHeight+tfOffsetWidth;
 		var textFrame = fileList[i].name; // ファイル名を変数に代入
-		writetextFrame(pageObj, textFrame, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft);	// ファイル名を追加する関数
+		writeTf(pageObj, textFrame, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft);	// ファイル名を追加する関数
 		imgObj = pageObj.rectangles.add();
 		imgObj.visibleBounds = [imgsStartY+unit, imgsStartX+unit, (imgsStartY+imgHeight)+unit, (imgsStartX+imgWidth)+unit];
 		imgObj.place(fileList[i]);
@@ -55,14 +55,13 @@
 			if (imgsStartY > pageHeight) {
 				imgsStartX = zeroX;
 				imgsStartY = zeroY;
-
 				pageObj = app.activeDocument.pages.add(); //ページを追加
 			}
 		}
 	}
 })();
 // テキストフレームを作成しファイル名を表示する処理
-function writetextFrame(pageObj, text, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft){
+function writeTf(pageObj, text, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft){
 //		var dakuten = "%E3%82%99";	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
 //		var handakuten = "%E3%82%9A";	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
 //		var text = convertKana(text,dakuten,1);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
