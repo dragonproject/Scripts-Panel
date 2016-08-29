@@ -2,40 +2,24 @@
 	var extType = "*.jpg";	// JPEGファイルだけを対象にする
 	var imgsStartX = zeroX = 10; // ページの貼り込み位置
 	var imgsStartY = zeroY = 20; // ページの貼り込み位置
-	//=====================================
-//	var zeroPint=[10,20];
-//	alert(zeroPint);
-	//=====================================
 	var maxImgWidth = parseFloat(prompt("横幅をmm単位で指定してください", 40));  // perseFloat
 	var maxImgHeight = parseFloat(prompt("縦幅をmm単位で指定してください", 30));
-//    var largeimgBounds = [];
     largeimgBounds.push (parseFloat(prompt("横幅をmm単位で指定してください", 40)));
     largeimgBounds.push (parseFloat(prompt("縦幅をmm単位で指定してください", 30)));
     //alert (largeimgBounds);
 	var diff = parseFloat(prompt("画像との間隔をmm単位で指定してください",5));
 	var pageWidth = 180;	// 180mm
 	var pageHeight = 270;	// 270mm
-	//=====================================
-//    var pageBounds = [180, 270];
-	//=====================================
     alert (pageBounds);
 	var imgWidth = maxImgWidth - diff;
 	var imgHeight = maxImgHeight - diff;
-//	var imgBounds = [];
-	//=====================================
-//    imgBounds.push (largeimgBounds[0] - diff);
-//    imgBounds.push (largeimgBounds[1] - diff);
-//    alert (imgBounds);
-	//=====================================
 	var tfOfstWidth = 0;	// 画像の左枠からのオフセット(mm)
 	var tfOfstWidth = 0.5;	// 画像の下枠からのオフセット(mm)
 	var tfWidth = imgWidth;
 //    var textFrame // 不要か？
-	//=====================================
     var tfBounds = []; // テキストフレームの
 	var tfHeight = 2.5;	// テキストフレームの高さを6mmにする
 	tfBounds.push(2.5);
-	//=====================================
 	var unit = "mm";
 	if (app.documents.length < 1) {
 		alert("あらかじめドキュメントを開いてから実行してください");
@@ -56,9 +40,6 @@
 	var pageObj = app.activeDocument.pages[pageNo];
 	for (var i=0; i<fileList.length; i++){
 		var tfsBaseTop = imgsStartY+imgHeight+tfOfstWidth;
-		//=====================================
-//		tfBounds.push(start)
-		//=====================================
 		var tfTop = tfsBaseTop+unit;	// テキストフレームの上の位置
 		var tfRight = (imgsStartX+tfOfstWidth+tfWidth)+unit;	// テキストフレームの右端の位置
 		var tfBottom = (tfsBaseTop+tfHeight)+unit;	// テキストフレームの下の位置
@@ -67,10 +48,8 @@
 		var textFrame = fileList[i].name; // ファイル名を変数に代入
 		writetextFrame(pageObj, textFrame, tfsBaseTop, tfTop, tfRight, tfBottom, tfLeft);	// ファイル名を追加する関数
 		imgObj = pageObj.rectangles.add();
-//		imgObj.visibleBounds = [imgsStartY+unit, (imgsStartX+imgWidth)+unit, (imgsStartY+imgHeight)+unit, imgsStartX+unit];
 		imgObj.visibleBounds = [imgsStartY+unit, imgsStartX+unit, (imgsStartY+imgHeight)+unit, (imgsStartX+imgWidth)+unit];
 		imgObj.place(fileList[i]);
-//		imgObj.fit(FitOptions.proportionally); //フィット設定
 		imgObj.fit(FitOptions.contentToFrame); //フィット設定
 		imgObj.fit(FitOptions.centerContent);
 		imgsStartX = imgsStartX + maxImgWidth;
@@ -80,9 +59,7 @@
 			imgsStartY = imgsStartY + maxImgHeight;
 			if (imgsStartY > pageHeight) {
 				imgsStartX = zeroX;
-//				alert(imgsStartX); //10
 				imgsStartY = zeroY;
-//				alert(imgsStartY); //20
 
 				pageObj = app.activeDocument.pages.add(); //ページを追加
 			}
