@@ -14,7 +14,6 @@
 	var tfWidth = imgWidth;
     var tfBounds = []; // テキストフレームの
 	var tfHeight = 2.5;	// テキストフレームの高さを6mmにする
-	tfBounds.push(2.5);
 	var unit = "mm";
 	if (app.documents.length < 1) {
 		alert("あらかじめドキュメントを開いてから実行してください");
