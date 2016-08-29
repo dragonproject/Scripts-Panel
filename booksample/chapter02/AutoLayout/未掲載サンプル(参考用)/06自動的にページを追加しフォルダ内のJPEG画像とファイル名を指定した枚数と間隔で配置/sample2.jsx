@@ -9,8 +9,8 @@
 	var pageHeight = 270;	// 270mm
 	var imgWidth = maxImgWidth - diff;
 	var imgHeight = maxImgHeight - diff;
-	var tfOfstWidth = 0;	// 画像の左枠からのオフセット(mm)
-	var tfOfstWidth = 0.5;	// 画像の下枠からのオフセット(mm)
+	var tfOffsetWidth = 0;	// 画像の左枠からのオフセット(mm)
+	var tfOffsetWidth = 0.5;	// 画像の下枠からのオフセット(mm)
 	var tfWidth = imgWidth;
     var tfBounds = []; // テキストフレームの
 	var tfHeight = 2.5;	// テキストフレームの高さを6mmにする
@@ -34,12 +34,12 @@
 	}
 	var pageObj = app.activeDocument.pages[pageNo];
 	for (var i=0; i<fileList.length; i++){
-		var tfsBaseTop = imgsStartY+imgHeight+tfOfstWidth;
+		var tfsBaseTop = imgsStartY+imgHeight+tfOffsetWidth;
 		var tfsTop = tfsBaseTop+unit;	// テキストフレームの上の位置
-		var tfsRight = (imgsStartX+tfOfstWidth+tfWidth)+unit;	// テキストフレームの右端の位置
+		var tfsRight = (imgsStartX+tfOffsetWidth+tfWidth)+unit;	// テキストフレームの右端の位置
 		var tfsBottom = (tfsBaseTop+tfHeight)+unit;	// テキストフレームの下の位置
-		var tfsLeft = (imgsStartX+tfOfstWidth)+unit;	// テキストフレームの左端の位置
-		var tfsBaseTop = imgsStartY+imgHeight+tfOfstWidth;
+		var tfsLeft = (imgsStartX+tfOffsetWidth)+unit;	// テキストフレームの左端の位置
+		var tfsBaseTop = imgsStartY+imgHeight+tfOffsetWidth;
 		var textFrame = fileList[i].name; // ファイル名を変数に代入
 		writetextFrame(pageObj, textFrame, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft);	// ファイル名を追加する関数
 		imgObj = pageObj.rectangles.add();
