@@ -15,7 +15,7 @@
 	var textFrameHeight = 2.5;	// テキストフレームの高さを6mmにする
 	var unit = "mm";
 	if (app.documents.length < 1) {
-		alert("あらかじめドキュメントを開いてから実行してください");
+		alert("あらかじめドキュメントを開いてから実行してください");      
 		return;
 	}
 	var folderObj = Folder.selectDialog("JPEG画像のあるフォルダを選択してください");
