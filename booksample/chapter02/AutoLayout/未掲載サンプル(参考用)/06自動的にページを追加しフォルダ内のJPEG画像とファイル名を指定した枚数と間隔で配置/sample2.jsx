@@ -4,19 +4,14 @@
 	var imgsStartY = zeroY = 20; // ページの貼り込み位置
 	var maxImgWidth = parseFloat(prompt("横幅をmm単位で指定してください", 40));  // perseFloat
 	var maxImgHeight = parseFloat(prompt("縦幅をmm単位で指定してください", 30));
-    largeimgBounds.push (parseFloat(prompt("横幅をmm単位で指定してください", 40)));
-    largeimgBounds.push (parseFloat(prompt("縦幅をmm単位で指定してください", 30)));
-    //alert (largeimgBounds);
 	var diff = parseFloat(prompt("画像との間隔をmm単位で指定してください",5));
 	var pageWidth = 180;	// 180mm
 	var pageHeight = 270;	// 270mm
-    alert (pageBounds);
 	var imgWidth = maxImgWidth - diff;
 	var imgHeight = maxImgHeight - diff;
 	var tfOfstWidth = 0;	// 画像の左枠からのオフセット(mm)
 	var tfOfstWidth = 0.5;	// 画像の下枠からのオフセット(mm)
 	var tfWidth = imgWidth;
-//    var textFrame // 不要か？
     var tfBounds = []; // テキストフレームの
 	var tfHeight = 2.5;	// テキストフレームの高さを6mmにする
 	tfBounds.push(2.5);
@@ -40,13 +35,13 @@
 	var pageObj = app.activeDocument.pages[pageNo];
 	for (var i=0; i<fileList.length; i++){
 		var tfsBaseTop = imgsStartY+imgHeight+tfOfstWidth;
-		var tfTop = tfsBaseTop+unit;	// テキストフレームの上の位置
-		var tfRight = (imgsStartX+tfOfstWidth+tfWidth)+unit;	// テキストフレームの右端の位置
-		var tfBottom = (tfsBaseTop+tfHeight)+unit;	// テキストフレームの下の位置
-		var tfLeft = (imgsStartX+tfOfstWidth)+unit;	// テキストフレームの左端の位置
+		var tfsTop = tfsBaseTop+unit;	// テキストフレームの上の位置
+		var tfsRight = (imgsStartX+tfOfstWidth+tfWidth)+unit;	// テキストフレームの右端の位置
+		var tfsBottom = (tfsBaseTop+tfHeight)+unit;	// テキストフレームの下の位置
+		var tfsLeft = (imgsStartX+tfOfstWidth)+unit;	// テキストフレームの左端の位置
 		var tfsBaseTop = imgsStartY+imgHeight+tfOfstWidth;
 		var textFrame = fileList[i].name; // ファイル名を変数に代入
-		writetextFrame(pageObj, textFrame, tfsBaseTop, tfTop, tfRight, tfBottom, tfLeft);	// ファイル名を追加する関数
+		writetextFrame(pageObj, textFrame, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft);	// ファイル名を追加する関数
 		imgObj = pageObj.rectangles.add();
 		imgObj.visibleBounds = [imgsStartY+unit, imgsStartX+unit, (imgsStartY+imgHeight)+unit, (imgsStartX+imgWidth)+unit];
 		imgObj.place(fileList[i]);
@@ -67,14 +62,14 @@
 	}
 })();
 // テキストフレームを作成しファイル名を表示する処理
-function writetextFrame(pageObj, text, tfsBaseTop, tfTop, tfRight, tfBottom, tfLeft){
+function writetextFrame(pageObj, text, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft){
 //		var dakuten = "%E3%82%99";	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
 //		var handakuten = "%E3%82%9A";	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
 //		var text = convertKana(text,dakuten,1);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
 //		var text = convertKana(text,handakuten,2);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
 //		text = File.decode(text);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
 		var tfObj = pageObj.textFrames.add();
-		tfObj.visibleBounds = [tfTop, tfRight, tfBottom, tfLeft];
+		tfObj.visibleBounds = [tfsTop, tfsRight, tfsBottom, tfsLeft];
 		tfObj.contents = text;
 		return tfObj;	// 作成されたテキストオブジェクトを返す。後利用を考慮して、このようにしておく
 }
