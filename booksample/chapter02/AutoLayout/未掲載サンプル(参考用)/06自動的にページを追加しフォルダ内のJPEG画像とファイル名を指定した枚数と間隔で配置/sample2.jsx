@@ -1,21 +1,22 @@
 (function(){
 	var extType = "*.jpg";	// JPEGファイルだけを対象にする
-	var imageStartX = startX = 10; // ページの貼り込み位置
-	var imageStartY = startY = 20; // ページの貼り込み位置
-	var largeImageWidth = parseFloat(prompt("横幅をmm単位で指定してください", 40));  // perseFloat
-	var largeImageHeight = parseFloat(prompt("縦幅をmm単位で指定してください", 30));
+	var imgsStartX = zeroX = 10; // ページの貼り込み位置
+	var imgsStartY = zeroY = 20; // ページの貼り込み位置
+	var maxImgWidth = parseFloat(prompt("横幅をmm単位で指定してください", 40));  // perseFloat文字列を数値に変換
+	var maxImgHeight = parseFloat(prompt("縦幅をmm単位で指定してください", 30));
 	var diff = parseFloat(prompt("画像との間隔をmm単位で指定してください",5));
 	var pageWidth = 180;	// 180mm
 	var pageHeight = 270;	// 270mm
-	var imageWidth = largeImageWidth - diff;
-	var imageHeight = largeImageHeight - diff;
-	var textFrameOffsetWidth = 0;	// 画像の左枠からのオフセット(mm)
-	var textFrameOffsetHeight = 0.5;	// 画像の下枠からのオフセット(mm)
-	var textFrameWidth = imageWidth;
-	var textFrameHeight = 2.5;	// テキストフレームの高さを6mmにする
+	var imgWidth = maxImgWidth - diff;
+	var imgHeight = maxImgHeight - diff;
+	var tfOffsetWidth = 0;	// 画像の左枠からのオフセット(mm)
+	var tfOffsetWidth = 0.5;	// 画像の下枠からのオフセット(mm)
+	var tfWidth = imgWidth;
+    var tfBounds = []; // テキストフレームの
+	var tfHeight = 2.5;	// テキストフレームの高さを6mmにする
 	var unit = "mm";
 	if (app.documents.length < 1) {
-		alert("あらかじめドキュメントを開いてから実行してください");      
+		alert("あらかじめドキュメントを開いてから実行してください");
 		return;
 	}
 	var folderObj = Folder.selectDialog("JPEG画像のあるフォルダを選択してください");
@@ -32,45 +33,41 @@
 	}
 	var pageObj = app.activeDocument.pages[pageNo];
 	for (var i=0; i<fileList.length; i++){
-		var textFrameBaseTop = imageStartY+imageHeight+textFrameOffsetHeight;
-		var textFrameTop = textFrameBaseTop+unit;	// テキストフレームの上の位置
-		var textFrameRight = (imageStartX+textFrameOffsetWidth+textFrameWidth)+unit;	// テキストフレームの右端の位置
-		var textFrameBottom = (textFrameBaseTop+textFrameHeight)+unit;	// テキストフレームの下の位置
-		var textFrameLeft = (imageStartX+textFrameOffsetWidth)+unit;	// テキストフレームの左端の位置
-		var textFrameBaseTop = imageStartY+imageHeight+textFrameOffsetHeight;
+		var tfsBaseTop = imgsStartY+imgHeight+tfOffsetWidth;
+		var tfsTop = tfsBaseTop+unit;	// テキストフレームの上の位置
+		var tfsRight = (imgsStartX+tfOffsetWidth+tfWidth)+unit;	// テキストフレームの右端の位置
+		var tfsBottom = (tfsBaseTop+tfHeight)+unit;	// テキストフレームの下の位置
+		var tfsLeft = (imgsStartX+tfOffsetWidth)+unit;	// テキストフレームの左端の位置
+		var tfsBaseTop = imgsStartY+imgHeight+tfOffsetWidth;
 		var textFrame = fileList[i].name; // ファイル名を変数に代入
-		writetextFrame(pageObj, textFrame, textFrameBaseTop, textFrameTop, textFrameRight, textFrameBottom, textFrameLeft);	// ファイル名を追加
+		writeTf(pageObj, textFrame, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft);	// ファイル名を追加する関数
 		imgObj = pageObj.rectangles.add();
-		imgObj.visibleBounds = [imageStartY+unit, (imageStartX+imageWidth)+unit, (imageStartY+imageHeight)+unit, imageStartX+unit];
+		imgObj.visibleBounds = [imgsStartY+unit, imgsStartX+unit, (imgsStartY+imgHeight)+unit, (imgsStartX+imgWidth)+unit];
 		imgObj.place(fileList[i]);
-//		imgObj.fit(FitOptions.proportionally); //フィット設定
 		imgObj.fit(FitOptions.contentToFrame); //フィット設定
 		imgObj.fit(FitOptions.centerContent);
-		imageStartX = imageStartX + largeImageWidth;
-		if (imageStartX > pageWidth){
-//			alert(imageStartX);  // 210 ページの追加ロジック
-			imageStartX = startX
-			imageStartY = imageStartY + largeImageHeight;
-			if (imageStartY > pageHeight) {
-				imageStartX = startX;
-//				alert(imageStartX); //10
-				imageStartY = startY;
-//				alert(imageStartY); //20
-
+		imgsStartX = imgsStartX + maxImgWidth;
+		if (imgsStartX > pageWidth){
+//			alert(imgsStartX);  // 210 ページの追加ロジック
+			imgsStartX = zeroX
+			imgsStartY = imgsStartY + maxImgHeight;
+			if (imgsStartY > pageHeight) {
+				imgsStartX = zeroX;
+				imgsStartY = zeroY;
 				pageObj = app.activeDocument.pages.add(); //ページを追加
 			}
 		}
 	}
 })();
 // テキストフレームを作成しファイル名を表示する処理
-function writetextFrame(pageObj, text, textFrameBaseTop, textFrameTop, textFrameRight, textFrameBottom, textFrameLeft){
-		var dakuten = "%E3%82%99";	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
-		var handakuten = "%E3%82%9A";	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
-		text = convertKana(text,dakuten,1);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
-		text = convertKana(text,handakuten,2);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
-		text = File.decode(text);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
+function writeTf(pageObj, text, tfsBaseTop, tfsTop, tfsRight, tfsBottom, tfsLeft){
+//		var dakuten = "%E3%82%99";	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
+//		var handakuten = "%E3%82%9A";	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
+//		var text = convertKana(text,dakuten,1);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
+//		var text = convertKana(text,handakuten,2);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
+//		text = File.decode(text);	// ★Mac版InDesign CS2用 (WindowsやCS3では不要)
 		var tfObj = pageObj.textFrames.add();
-		tfObj.visibleBounds = [textFrameTop, textFrameRight, textFrameBottom, textFrameLeft];
+		tfObj.visibleBounds = [tfsTop, tfsRight, tfsBottom, tfsLeft];
 		tfObj.contents = text;
 		return tfObj;	// 作成されたテキストオブジェクトを返す。後利用を考慮して、このようにしておく
 }
